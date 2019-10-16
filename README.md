@@ -9,7 +9,25 @@ This example creates an example Python web application (using Flask), and a Redi
 * Docker
 * Docker Compose (optional)
 
+The following commands describe how to install these prerequisites under Ubuntu.
+
+Install Docker:
+```sh
+$ apt-get update && apt-get install -y docker.io
+$ update-rc.d docker defaults
+
+# usermod change requires new shell
+$ usermod -aG docker vagrant
+```
+
+Install Docker Compose (assumes Python and PIP are already installed):
+```sh
+$ pip install docker-compose
+```
+
 ## Docker Usage
+
+If using Docker Compose, skip to that section.  Docker Compose simplifies the process and creates many resources (images, containers, networks, volumes, etc) through Docker for you.
 
 Build the image:
 ```sh
@@ -90,23 +108,23 @@ Stop the containers (and remove containers, networks, and volumes):
 $ docker-compose down --volumes
 ```
 
-## Access the web application
+## Access the Web Application
 
-The web application can be accessed from your host (localhost or otherwise):
+The web application can be accessed from your host (localhost or the IP of the VM it is running in):
 ```
 http://localhost:5000/
 http://localhost:5000/count
 ```
 
-The root API serves static content, while the count API returns a cached value from Redis.  Any changes to the app.py file will be immediately reflected in the container as the file is bind mounted.
+The root API serves static content, while the count API returns a cached value from Redis.  Any changes to the `app.py` file will be immediately reflected in the container as the file is bind mounted.
 
 ## Further Modifications
 
-It is expected that the example applications and services in this project template would be updated or replaced with the desired applications and services.  Additional applications or services can be added under their own directory and included in the docker-compose.yaml file.
+It is expected that the example applications and services in this project template would be updated or replaced with the desired applications and services.  Additional applications or services can be added under their own directory and included in the `docker-compose.yaml` file.
 
-Environment-specific Docker settings can be put in an `.env` file, and environment-specific Docker Compose overrides can be put in a docker-compose.overrides.yaml file.
+Environment-specific Docker settings can be put in an `.env` file, and environment-specific Docker Compose overrides can be put in a `docker-compose.overrides.yaml` file.
 
-Use the Docker Compose `scale` option (during `up` or standalone) to scale the number of nodes for a given application or service.  An load balancer can then be placed in front of the given application or service.
+Use the Docker Compose `scale` option (during `docker-compose up` or as a standalone command) to scale the number of nodes for a given application or service.  An load balancer can then be placed in front of the given application or service.
 
 ## License
 
