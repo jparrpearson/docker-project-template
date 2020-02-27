@@ -120,9 +120,9 @@ The root API serves static content, while the count API returns a cached value f
 
 ## Further Modifications
 
-It is expected that the example applications and services in this project template would be updated or replaced with the desired applications and services.  Additional applications or services can be added under their own directory and included in the `docker-compose.yaml` file.
+It is expected that the example applications and services in this project template would be updated or replaced with the desired applications and services.  Additional applications or services can be added under their own directory and included in the `docker-compose.yml` file.
 
-Environment-specific Docker settings can be put in an `.env` file, and environment-specific Docker Compose overrides can be put in a `docker-compose.overrides.yaml` file.
+Environment-specific Docker settings can be put in an `.env` file, and environment-specific Docker Compose overrides can be put in a `docker-compose.override.yml` file.
 
 Use the Docker Compose `scale` option (during `docker-compose up` or as a standalone command) to scale the number of nodes for a given application or service.  An load balancer can then be placed in front of the given application or service.
 
